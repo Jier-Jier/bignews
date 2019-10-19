@@ -60,8 +60,16 @@
     window.onload = function() {
         $('.level01:eq(1)').click(function(e) {
             $(this).next('.level02').slideToggle()
-        })
-
+        });
+        // 左侧导航栏样式及点击事件
+        $('.level01').click(function() {
+            $(this).addClass('active').siblings().removeClass('active')
+            $('.level02 li').removeClass('active')
+        });
+        $('.level02 li').click(function() {
+            $(this).addClass('active').siblings().removeClass('active')
+            $('.level01').removeClass('active')
+        });
         //
     }
 </script>
