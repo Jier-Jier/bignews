@@ -84,6 +84,13 @@
                 $('.user_info>span').text(`欢迎 ${res.data.nickname}`);
                 $('.user_center_link img').prop('src', res.data.userPic);
 
+            },
+            //添加用户登陆后  删除本地存储时的情况   需要提示重新登录  并且跳转到登录login界面
+            error: function(res) {
+                if (res.statusText == 'Forbidden') {
+                    alert('请先登录');
+                    window.location.href = './login.html';
+                }
             }
         })
     }
