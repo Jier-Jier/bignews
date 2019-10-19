@@ -62,7 +62,9 @@
             },
             success: function(res) {
                 if (res.code == 200) {
-
+                    //确定账户密码正确后，跳转页面，v错误则提示错误信息
+                    //保存token数据  便于页面保持该用户灯笼裤状态
+                    window.localStorage.setItem('token', res.token)
                     alert('登录成功')
                     window.location.href = './index.html';
                 } else if (res.code == 400) {

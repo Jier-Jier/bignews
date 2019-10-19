@@ -70,7 +70,22 @@
             $(this).addClass('active').siblings().removeClass('active')
             $('.level01').removeClass('active')
         });
-        //
+        //承接登录页面  保持当页用户为登录用户
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/admin/user/info',
+            type: 'get',
+            headers: {
+                Authorization: window.localStorage.getItem('token')
+            },
+            success: function(res) {
+                console.log(res.data.nickname)
+                    // 获取成功后，获取数据中的用户名及头像图片地址，替换到本页相应位置
+                $('.user_info>img').prop('src', res.data.userPic);
+                $('.user_info>span').text(`欢迎 ${res.data.nickname}`);
+                $('.user_center_link img').prop('src', res.data.userPic);
+
+            }
+        })
     }
 </script>
 
